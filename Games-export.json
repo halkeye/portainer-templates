@@ -230,7 +230,8 @@
         }
       ],
       "command": [
-        "--arkopt,-crossplay --arkopt,-NoBattlEye"
+        "--arkopt,-crossplay",
+        "--arkopt,-NoBattlEye"
       ],
       "devices": [],
       "labels": [],
