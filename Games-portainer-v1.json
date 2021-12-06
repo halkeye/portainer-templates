@@ -93,7 +93,7 @@
         "label": "STEAMBETA"
       }
     ],
-    "logo": "https://static.wikia.nocookie.net/satisfactory_gamepedia_en/images/8/8a/Satisfactory_logo.png/revision/latest/scale-to-width-down/1000?cb=20180612021947",
+    "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/Satisfactory_logo.png",
     "network_mode": "none",
     "type": 1
   },
@@ -188,7 +188,7 @@
       "--arkopt,-crossplay --arkopt,-NoBattlEye"
     ],
     "network_mode": "bridge",
-    "logo": "https://static.wikia.nocookie.net/arksurvivalevolved_gamepedia/images/2/24/ARK.png/revision/latest/scale-to-width-down/300?cb=20180928114426",
+    "logo": https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png",
     "type": 1
   }
 ]
