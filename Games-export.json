@@ -237,7 +237,7 @@
       "sysctls": [],
       "cap_add": [],
       "network_mode": "bridge",
-      "logo": https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png"
+      "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png"
     }
   ]
 }

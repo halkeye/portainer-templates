@@ -190,7 +190,7 @@
                 "--arkopt,-crossplay --arkopt,-NoBattlEye"
             ],
             "network_mode": "bridge",
-            "logo": https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png",
+            "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png",
             "type": 1
         }
     ]
