@@ -1,0 +1,197 @@
+{
+    "version": "2",
+    "templates": [
+        {
+            "title": "Satisfactory Server",
+            "name": "satisfactory-server",
+            "image": "wolveix/satisfactory-server:latest",
+            "categories": [
+                "Games"
+            ],
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "7777:7777/tcp",
+                "15000:15000/udp",
+                "15777:15777/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/storage/satisfactory"
+                }
+            ],
+            "env": [
+                {
+                    "name": "AUTOPAUSE",
+                    "default": "true",
+                    "description": "pause game when no player is connected",
+                    "label": "AUTOPAUSE"
+                },
+                {
+                    "name": "AUTOSAVEINTERVAL",
+                    "default": "300",
+                    "description": "autosave interval in seconds",
+                    "label": "AUTOSAVEINTERVAL"
+                },
+                {
+                    "name": "AUTOSAVENUM",
+                    "default": "3",
+                    "description": "number of rotating autosave files",
+                    "label": "AUTOSAVENUM"
+                },
+                {
+                    "name": "AUTOSAVEONDISCONNECT",
+                    "default": "true",
+                    "description": "autosave when last player disconnects",
+                    "label": "AUTOSAVEONDISCONNECT"
+                },
+                {
+                    "name": "CRASHREPORT",
+                    "default": "true",
+                    "description": "automatic crash reporting",
+                    "label": "CRASHREPORT"
+                },
+                {
+                    "name": "DEBUG",
+                    "default": "false",
+                    "label": "DEBUG",
+                    "description": "for debugging the server"
+                },
+                {
+                    "name": "DISABLESEASONALEVENTS",
+                    "default": "false",
+                    "label": "DISABLESEASONALEVENTS",
+                    "description": "disable the FICSMAS event (you miserable bastard)"
+                },
+                {
+                    "name": "MAXPLAYERS",
+                    "default": "4",
+                    "label": "MAXPLAYERS",
+                    "description": "set the player limit for your server"
+                },
+                {
+                    "name": "PGID",
+                    "default": "1000",
+                    "label": "PGID",
+                    "description": "set the group ID of the user the server will run as"
+                },
+                {
+                    "name": "PUID",
+                    "default": "1000",
+                    "label": "PUID",
+                    "description": "set the user ID of the user the server will run as"
+                },
+                {
+                    "name": "SKIPUPDATE",
+                    "default": "false",
+                    "label": "SKIPUPDATE",
+                    "description": "avoid updating the game on container start/restart"
+                },
+                {
+                    "name": "STEAMBETA",
+                    "default": "false",
+                    "description": "set experimental game version",
+                    "label": "STEAMBETA"
+                }
+            ],
+            "logo": "https://static.wikia.nocookie.net/satisfactory_gamepedia_en/images/8/8a/Satisfactory_logo.png/revision/latest/scale-to-width-down/1000?cb=20180612021947",
+            "network_mode": "none",
+            "type": 1
+        },
+        {
+            "title": "ARK Server",
+            "name": "ark-server",
+            "image": "hermsi/ark-server:latest",
+            "categories": [
+                "Games"
+            ],
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "7777:7777/udp",
+                "7778:7778/udp",
+                "27020:27020/tcp",
+                "27015:27015/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/app",
+                    "bind": "/storage/ark/app"
+                },
+                {
+                    "container": "/home/steam/ARK-Backups",
+                    "bind": "/storage/ark/backups"
+                }
+            ],
+            "env": [
+                {
+                    "name": "SESSION_NAME",
+                    "default": "Dockerized ARK Server by github.com/hermsi1337",
+                    "label": "SESSION_NAME",
+                    "description": "The name of your ARK-session which is visible in game when searching for servers"
+                },
+                {
+                    "name": "SERVER_MAP",
+                    "default": "TheIsland",
+                    "label": "SERVER_MAP",
+                    "description": "Desired map you want to play"
+                },
+                {
+                    "name": "SERVER_PASSWORD",
+                    "default": "YouShallNotPass",
+                    "label": "SERVER_PASSWORD",
+                    "description": "Server password which is required to join your session. (overwrite with empty string if you want to disable password authentication)"
+                },
+                {
+                    "name": "ADMIN_PASSWORD",
+                    "default": "Th155houldD3f1n3tlyB3Chang3d",
+                    "label": "ADMIN_PASSWORD",
+                    "description": "Admin-password in order to access the admin console of ARK"
+                },
+                {
+                    "name": "MAX_PLAYERS",
+                    "default": "20",
+                    "label": "MAX_PLAYERS",
+                    "description": "Maximum number of players to join your session"
+                },
+                {
+                    "name": "UPDATE_ON_START",
+                    "default": "false",
+                    "description": "Whether you want to update the ARK-server upon startup or not",
+                    "label": "UPDATE_ON_START"
+                },
+                {
+                    "name": "BACKUP_ON_STOP",
+                    "default": "false",
+                    "description": "Create a backup before gracefully stopping the ARK-server",
+                    "label": "BACKUP_ON_STOP"
+                },
+                {
+                    "name": "PRE_UPDATE_BACKUP",
+                    "default": "true",
+                    "label": "PRE_UPDATE_BACKUP",
+                    "description": "Create a backup before updating ARK-server"
+                },
+                {
+                    "name": "WARN_ON_STOP",
+                    "default": "true",
+                    "label": "WARN_ON_STOP",
+                    "description": "Broadcast a warning upon graceful shutdown"
+                },
+                {
+                    "name": "GAME_MOD_IDS",
+                    "default": "",
+                    "label": "GAME_MOD_IDS",
+                    "description": "Additional game-mods you want to install, seperated by comma. (e.g. 487516323,487516324,487516325)"
+                }
+            ],
+            "command": [
+                "--arkopt,-crossplay --arkopt,-NoBattlEye"
+            ],
+            "network_mode": "bridge",
+            "logo": "https://static.wikia.nocookie.net/arksurvivalevolved_gamepedia/images/2/24/ARK.png/revision/latest/scale-to-width-down/300?cb=20180928114426",
+            "type": 1
+        }
+    ]
+}
