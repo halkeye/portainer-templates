@@ -95,7 +95,6 @@
                     "label": "STEAMBETA"
                 }
             ],
-            "command": [],
             "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/Satisfactory_logo.png",
             "network_mode": "none",
             "type": 1
@@ -187,10 +186,7 @@
                     "description": "Additional game-mods you want to install, seperated by comma. (e.g. 487516323,487516324,487516325)"
                 }
             ],
-            "command": [
-                "--arkopt,-crossplay",
-                "--arkopt,-NoBattlEye"
-            ],
+            "command": "--arkopt,-crossplay --arkopt,-NoBattlEye",
             "network_mode": "bridge",
             "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png",
             "type": 1
