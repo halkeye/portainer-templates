@@ -95,6 +95,7 @@
                     "label": "STEAMBETA"
                 }
             ],
+            "command": [],
             "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/Satisfactory_logo.png",
             "network_mode": "none",
             "type": 1
