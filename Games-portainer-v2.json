@@ -190,6 +190,179 @@
             "network_mode": "bridge",
             "logo": "https://raw.githubusercontent.com/halkeye/portainer-templates/main/images/ARK.png",
             "type": 1
+        },
+        {
+            "title": "Valheim Server",
+            "name": "valheim-server",
+            "image": "lloesche/valheim-server:latest",
+            "categories": [
+                "Games"
+            ],
+            "platform": "linux",
+            "restart_policy": "unless-stopped",
+            "ports": [
+                "2456:2456/udp",
+                "2457:2457/udp"
+            ],
+            "volumes": [
+                {
+                    "container": "/config",
+                    "bind": "/storage/valheim-server/config"
+                },
+                {
+                    "container": "/opt/valheim",
+                    "bind": "/storage/valheim-server/data"
+                }
+            ],
+            "env": [
+                {
+                    "name": "SERVER_NAME",
+                    "default": "My Server",
+                    "label": "SERVER_NAME",
+                    "description": "Name that will be shown in the server browser"
+                },
+                {
+                    "name": "WORLD_NAME",
+                    "default": "Dedicated",
+                    "label": "WORLD_NAME",
+                    "description": "Name of the world without .db/.fwl file extension"
+                },
+                {
+                    "name": "SERVER_PASS",
+                    "default": "secret",
+                    "label": "SERVER_PASS",
+                    "description": "Password for logging into the server - min. 5 characters!"
+                },
+                {
+                    "name": "SERVER_PUBLIC",
+                    "default": "false",
+                    "label": "SERVER_PUBLIC",
+                    "description": "Whether the server should be listed in the server browser (true) or not (false)"
+                },
+                {
+                    "name": "SERVER_ARGS",
+                    "default": "",
+                    "label": "SERVER_ARGS",
+                    "description": "Additional Valheim server CLI arguments"
+                },
+                {
+                    "name": "ADMINLIST_IDS",
+                    "default": "",
+                    "label": "ADMINLIST_IDS",
+                    "description": "Space separated list of admin SteamIDs. Overrides any existing adminlist.txt entries!"
+                },
+                {
+                    "name": "BANNEDLIST_IDS",
+                    "default": "",
+                    "label": "BANNEDLIST_IDS",
+                    "description": "Space separated list of banned SteamIDs. Overrides any existing bannedlist.txt entries!"
+                },
+                {
+                    "name": "PERMITTEDLIST_IDS",
+                    "default": "",
+                    "label": "PERMITTEDLIST_IDS",
+                    "description": "Space separated list of whitelisted SteamIDs. Overrides any existing permittedlist.txt entries!"
+                },
+                {
+                    "name": "UPDATE_CRON",
+                    "default": "*/15 * * * *",
+                    "label": "UPDATE_CRON",
+                    "description": "Cron schedule for update checks (disabled if set to an empty string or if the legacy UPDATE_INTERVAL is set)"
+                },
+                {
+                    "name": "UPDATE_IF_IDLE",
+                    "default": "true",
+                    "label": "UPDATE_IF_IDLE",
+                    "description": "Only run update check if no players are connected to the server (true or false)"
+                },
+                {
+                    "name": "RESTART_CRON",
+                    "default": "0 5 * * *",
+                    "label": "RESTART_CRON",
+                    "description": "Cron schedule for server restarts (disabled if set to an empty string)"
+                },
+                {
+                    "name": "RESTART_IF_IDLE",
+                    "default": "true",
+                    "label": "RESTART_IF_IDLE",
+                    "description": "Only run daily restart if no players are connected to the server (true or false)"
+                },
+                {
+                    "name": "TZ",
+                    "default": "Etc/UTC",
+                    "label": "TZ",
+                    "description": "Container time zone"
+                },
+                {
+                    "name": "BACKUPS",
+                    "default": "true",
+                    "label": "BACKUPS",
+                    "description": "Whether the server should create periodic backups (true or false)"
+                },
+                {
+                    "name": "BACKUPS_CRON",
+                    "default": "0 * * * *",
+                    "label": "BACKUPS_CRON",
+                    "description": "Cron schedule for world backups (disabled if set to an empty string or if the legacy BACKUPS_INTERVAL is set)"
+                },
+                {
+                    "name": "BACKUPS_DIRECTORY",
+                    "default": "/config/backups",
+                    "label": "BACKUPS_DIRECTORY",
+                    "description": "Path to the backups directory"
+                },
+                {
+                    "name": "BACKUPS_MAX_AGE",
+                    "default": "3",
+                    "label": "BACKUPS_MAX_AGE",
+                    "description": "Age in days after which old backups are flushed"
+                },
+                {
+                    "name": "BACKUPS_MAX_COUNT",
+                    "default": "0",
+                    "label": "BACKUPS_MAX_COUNT",
+                    "description": "Maximum number of backups kept, 0 means infinity"
+                },
+                {
+                    "name": "BACKUPS_IF_IDLE",
+                    "default": "true",
+                    "label": "BACKUPS_IF_IDLE",
+                    "description": "Backup even when no players have been connected for a while"
+                },
+                {
+                    "name": "BACKUPS_IDLE_GRACE_PERIOD",
+                    "default": "3600",
+                    "label": "BACKUPS_IDLE_GRACE_PERIOD",
+                    "description": "Grace period in seconds after the last player has disconnected in which we will still create backups when BACKUPS_IF_IDLE=false"
+                },
+                {
+                    "name": "PERMISSIONS_UMASK",
+                    "default": "022",
+                    "label": "PERMISSIONS_UMASK",
+                    "description": "Umask to use for backups, config files and directories"
+                },
+                {
+                    "name": "STEAMCMD_ARGS",
+                    "default": "validate",
+                    "label": "STEAMCMD_ARGS",
+                    "description": "Additional steamcmd CLI arguments"
+                },
+                {
+                    "name": "VALHEIM_PLUS",
+                    "default": "false",
+                    "label": "VALHEIM_PLUS",
+                    "description": "Whether ValheimPlus mod should be loaded (config in /config/valheimplus, additional plugins in /config/valheimplus/plugins). Can not be used together with BEPINEX."
+                },
+                {
+                    "name": "BEPINEX",
+                    "default": "false",
+                    "label": "BEPINEX",
+                    "description": "Whether BepInExPack Valheim mod should be loaded (config in /config/bepinex, plugins in /config/bepinex/plugins). Can not be used together with VALHEIM_PLUS."
+                }
+            ],
+            "network_mode": "bridge",
+            "logo": "https://raw.githubusercontent.com/lloesche/valheim-server-docker/main/misc/Logo_valheim.png",
+            "type": 1
         }
     ]
 }
